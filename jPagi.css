@@ -1,0 +1,30 @@
+.jpagi-nav-btns a{
+	padding:3px;
+	border:1px solid gray;
+	margin:3px;
+	color:black;
+	text-decoration:none
+}
+.jpagi_next_link
+{
+	background: #C2EBED;
+	color:black !important;
+}
+.jpagi_previous_link
+{
+	background: #fff;
+	color:black !important;
+}
+.jpagi_active_page{
+	background:darkblue;
+	color:white !important;
+}
+
+.jpagi-btn-active {
+	background-color: orange;
+	color: green !important;;
+}
+
+.jpagi-btn-inactive {
+	background-color: #d4d4d4;
+}
