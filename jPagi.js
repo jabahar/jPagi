@@ -1,15 +1,9 @@
 ;(function($)
 {
-	/** TO DO **/
-	//1. Take the inputs from content page and generate them here dynamically
-
-	
 	$.fn.jPagi=function(options)
 	{
 		var opts = $.extend({}, $.fn.jPagi.defaults, options);
 		
-		/*var show_per_page = 6; 
-		var show_max_nav = 4; */
 		//getting the amount of elements inside content div
 		var number_of_items = $(this).children().size();
 		//calculate the number of pages we are going to have
@@ -18,6 +12,7 @@
 		nav_btns_holder = '.jpagi-nav-btns';
 		var $this=$(this);
 
+		//create hidden input elements to hold page number and other values
 		$this.after("<input type='hidden' id='jPagiCurrentPage' /><input type='hidden' id='jPagiShowPerPage' /><input type='hidden' id='jPagiShowMaxNav' /><input type='hidden' id='jPagiTotalPages' /><input type='hidden' id='jPagiEndOffset' /><input type='hidden' id='jPagiStartOffset' />");
 
 
@@ -31,14 +26,6 @@
 			$('#jPagiStartOffset').val(start_offset);
 			$('#jPagiEndOffset').val(end_offset);
 			obj=$(this);
-			//now when we got all we need for the navigation let's make it '
-			
-			/* 
-			what are we going to have in the navigation?
-				- link to previous page
-				- links to specific pages
-				- link to next page
-			*///
 			
 			var navigation_html = '<a class="jpagi_previous_link jpagi-btn-inactive" href="#" onclick="jQuery.jPagi.previous();return false;">Previous</a>';
 			var current_link = 0;
@@ -58,9 +45,7 @@
 		//add jpagi_active_page class to the first page link
 		$(nav_btns_holder+'').find('.jpagi-page-link:first').addClass('jpagi_active_page');
 		return this.each(function()
-		{
-			
-			
+		{			
 			//hide all the elements inside content div
 			$(this).children().css('display', 'none');
 			
@@ -126,8 +111,7 @@ $.jPagi.next=function(){
 }
  
 function render_prev_nav(obj,page_num)
-{
-	
+{	
 	++page_num;	
 	css='';
 	start_offset=page_num-parseInt($('#jPagiShowMaxNav').val());
@@ -137,7 +121,6 @@ function render_prev_nav(obj,page_num)
 	var prev_link_class='jpagi_previous_link';
 	if(page_num!=0)
 	{
-		//css='style="background:#C2EBED"';
 		prev_link_class='jpagi_previous_link jpagi-btn-active';
 	}
 	var navigation_html = '<a class="'+prev_link_class+'" '+css+' href="#" onclick="jQuery.jPagi.previous();return false;">Previous</a>';
@@ -172,17 +155,17 @@ function render_nav(obj,page_num)
 	$('#jPagiStartOffset').val(start_offset);
 	var prev_link_class='jpagi_previous_link';
 	var next_link_class='jpagi_next_link jpagi-btn-active';
+
 	if(page_num!=0)
 	{
-		//css='style="background:#C2EBED"';
 		prev_link_class='jpagi_previous_link jpagi-btn-active';
 	}
 	
 	if(page_num==parseInt($('#jPagiTotalPages').val())-1)
 	{
-		//nxt_css='style="background:#fff"';
 		next_link_class='jpagi_next_link jpagi-btn-inactive'
 	}
+
 	var navigation_html = '<a class="'+prev_link_class+'" '+css+' href="#" onclick="jQuery.jPagi.previous();return false;">Previous</a>';
 	current_link=start_offset;
 	no_of_pages=parseInt($('#jPagiTotalPages').val())
@@ -208,17 +191,16 @@ function render_nav(obj,page_num)
 	$(nav_btns_holder).html(navigation_html);
 	
 }
+
 function go_to_page(page_num){
 	
 	//get the number of items shown per page
-	//alert($('#show_max_nav').val())
+	
 	if(page_num==parseInt($('#jPagiTotalPages').val()))
-	{
-		//$("a.jpagi_next_link").css('background','#fff');
-		//alert($("a.jpagi_next_link").html());
+	{		
 		return false;
-
 	}
+
 	if(page_num==-1)
 	{
 		return false;
@@ -226,18 +208,18 @@ function go_to_page(page_num){
 
 	if(page_num==0)
 	{
-		$("a.jpagi_previous_link").addClass('jpagi-btn-inactive');//css('background','#fff');
+		$("a.jpagi_previous_link").addClass('jpagi-btn-inactive');
 	}else
 	{
-		$("a.jpagi_previous_link").removeClass('jpagi-btn-inactive').addClass('jpagi-btn-active');//css('background','#C2EBED');
+		$("a.jpagi_previous_link").removeClass('jpagi-btn-inactive').addClass('jpagi-btn-active');
 	}
 
 	if(page_num==parseInt($('#jPagiTotalPages').val())-1)
 	{
-		$("a.jpagi_next_link").addClass('jpagi-btn-inactive');//css('background','#fff');
+		$("a.jpagi_next_link").addClass('jpagi-btn-inactive');
 	}else
 	{
-		$("a.jpagi_next_link").removeClass('jpagi-btn-inactive').addClass('jpagi-btn-active');//css('background','#C2EBED');
+		$("a.jpagi_next_link").removeClass('jpagi-btn-inactive').addClass('jpagi-btn-active');
 	}
 	var show_per_page = parseInt($('#jPagiShowPerPage').val());
 	
@@ -249,10 +231,8 @@ function go_to_page(page_num){
 	
 	//hide all children elements of content div, get specific items and show them
 	obj.children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
-	//alert($(this).val());
-	/*alert(start_from);
-		alert(end_on);*/
-	/*get the page link that has longdesc attribute of the current page and add jpagi_active_page class to it and remove that class from previously active page link*/
+	
+	//get the page link that has longdesc attribute of the current page and add jpagi_active_page class to it and remove that class from previously active page link
 	$('.jpagi-page-link[longdesc=' + page_num +']').addClass('jpagi_active_page').siblings('.jpagi_active_page').removeClass('jpagi_active_page');
 	
 	//update the current page input field
