@@ -22,7 +22,7 @@ a simple jQuery pagination plugin
    <div id="content">
       <p>As I grow older I pay less attention to what men say. I just watch what they do.</p>
       <p>Age considers youth ventures.</p>
-      <p>What most persons consider as virtue after forty is simply a loss of energy.</p>
+      <p>None are so old as those who have outlived enthusiasm.</p>
       ...
       ...
    </div>
