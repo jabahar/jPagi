@@ -20,7 +20,7 @@ a simple jQuery pagination plugin
 3. Put the elements you want to be shown inside the container div (*content* here for example)
    ```html  
    <div id="content">
-      <p>As I grow older I pay less attention to what men say. I just watch what they do.</p>
+      <p>With age comes wisdom.</p>
       <p>Age considers youth ventures.</p>
       <p>None are so old as those who have outlived enthusiasm.</p>
       ...
