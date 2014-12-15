@@ -22,7 +22,7 @@ a simple jQuery pagination plugin
    <div id="content">
       <p>As I grow older I pay less attention to what men say. I just watch what they do.</p>
       <p>Age considers youth ventures.</p>
-      <p>What most persons consider as virtue after the age of 40 is simply a loss of energy.</p>
+      <p>What most persons consider as virtue after forty is simply a loss of energy.</p>
       ...
       ...
    </div>
@@ -34,6 +34,24 @@ a simple jQuery pagination plugin
    ```
   
 5. Done!
+
+###Options
+jPagi has the following two options that you can specify while initializing the plugin:
+
+| Option        | Description                                   |
+| ------------- |-------------                                  | 
+| show_per_page | Number of items to show per page              |
+| show_nav_btns | Number of navigation buttons to be visible    |
+
+####Example
+The following code will list 7 items/elements at a given time from the parent item and will show only 3 navigation buttons at a given time. 
+
+```javascript
+  $(document).ready(function(){
+       $('#content').jPagi({show_per_page:7,show_nav_btns:3}); 
+  });
+```
+  So suppose there are 60 elements within the div content, then there will be 9 total pages and only 3 navigation buttons will be visible at any time apart from the next and previous buttons.
 
 
 
